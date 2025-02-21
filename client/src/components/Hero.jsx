@@ -5,7 +5,7 @@ import Bulb from "./Bulb";
 const Hero = () => {
   return (
     <div className="flex relative bg-black  flex-col justify-center text-white h-screen ">
-      <h1 className="text-3xl  text-center">Welcome To Chat Room</h1>
+      <h1 className="text-3xl  text-center">Welcome to the <span className="text-blue-400">Lobby</span> </h1>
       <div className="flex flex-col gap-4 items-center mt-8 ">
         {rooms.map((eachRoom) => {
           return (
