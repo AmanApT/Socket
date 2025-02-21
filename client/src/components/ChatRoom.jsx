@@ -1,13 +1,33 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatBubble from "./ChatBubble";
+import { createSocketConnection } from "../config/socket";
 
 const ChatRoom = () => {
   const { roomId } = useParams();
-  const [messages] = useState(["Hi", "Hi"]);
+  const [messages,setMessages] = useState([]);
   const [text, setText] = useState("");
 
   
+
+  const sendMessagge = ()=>{
+    const socket = createSocketConnection();
+    socket.emit("sendMessage", {roomId,text})
+    setText("")
+  }
+  useEffect(()=>{
+    const socket = createSocketConnection();
+    socket.emit("joinChat", {roomId} )
+    socket.on("messageReceived", ({text})=>{
+      setMessages((messages)=>[...messages,text])
+      console.log(text)
+    })
+    return ()=>{
+      socket.disconnect();
+    }
+
+  },[roomId])
+
   return (
     <div className="customChatContainer h-screen text-white p-12 flex items-center justify-center">
       <div className=" rounded-md p-4 customChat  w-9/12">
@@ -19,8 +39,8 @@ const ChatRoom = () => {
           <div className="overflow-y-scroll h-[65vh]">
             {messages?.map((eachMessage, index) => {
               return (
-                <div key={index} className="m-3">
-                  <ChatBubble />
+                <div key={index} className="m-3 " >
+                  <ChatBubble text={eachMessage} />
                 </div>
               );
             })}
@@ -31,6 +51,10 @@ const ChatRoom = () => {
               onChange={(e) => {
                 setText(e.target.value);
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter")
+                    sendMessagge()
+                }}
               type="text"
               id="first_name"
               className="bg-gray-50 border border-gray-300 w-10/12 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -38,7 +62,7 @@ const ChatRoom = () => {
               required
             />
 
-            <button className="rounded-lg  px-12 cursor-pointer py-2 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300">
+            <button onClick={sendMessagge} className="rounded-lg  px-12 cursor-pointer py-2 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300">
               Send
             </button>
           </div>
