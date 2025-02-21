@@ -1,0 +1,209 @@
+@import "tailwindcss";
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.customChatContainer {
+  background-image: url('https://wallpapersmug.com/large/b57166/minimal-mountains.jpg');
+  background-size: cover;
+}
+.customChat {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+
+.bulb-container{
+  width: 300px;
+  height: 500px;
+  position: absolute;
+  right: -5rem;
+  top: -4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  transform-origin: top;
+  animation: swing 3s ease-in-out infinite;
+}
+.wire{
+  width: 4px;
+  height: 150px;
+  background: rgb(38, 35, 50);
+  position: relative;
+  z-index: 1;
+}
+.connector{
+  background: #292929;
+  width: 12px;
+  aspect-ratio: 4/5;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 2;
+}
+.grove{
+  background: #424242;
+  width: 14px;
+  height: 2px; 
+  z-index: 3;
+}
+.bulb{
+  margin-top: -2px;
+  width: 42px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffeb00;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: -1px;
+  z-index: 1;
+  animation: flash 10s linear infinite;
+}
+.metal-wire{
+  position: relative;
+  border: 1px solid black;
+  width: 22px;
+  height: 11px;
+  border-radius: 50%;
+  z-index: 2;
+}
+.metal-wire:nth-child(1){
+  top: -1px;
+}
+.metal-wire:nth-child(2){
+  top: -7px;
+}
+.metal-wire:nth-child(3){
+  top: -13px;
+}
+@keyframes swing{
+  0%{
+    transform: rotate(15deg);
+  }
+  50%{
+    transform: rotate(-15deg);
+  }
+  100%{
+    transform: rotate(15deg);
+  }
+}
+@keyframes flash{
+  0%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  1%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  1.001%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  10%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  11.001%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  11.002%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  12%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  
+/*    */
+  39.999%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  40%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  41%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  41.001%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  
+/*    */
+  
+  75%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  75.5%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  75.501%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  
+/*    */
+  
+  80%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  81.001%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  81.002%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  82%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  82.001%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  82.002%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  83%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  83.001%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  83.002%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+  83.003%{
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0px 0px 0px 0px transparent;
+  }
+  88%{
+    background: rgba(255,235,0,1);
+    box-shadow: 0px 0px 150px 75px rgba(245,223,77,1);
+  }
+}
